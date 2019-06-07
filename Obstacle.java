@@ -16,10 +16,16 @@ public class Obstacle extends Actor
      * Act - do whatever the Obstacle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    int deletionCountDown = 60;
+    
     public void act() 
     {
-        //turn(90);
-        //move(100);
-        setLocation(getX(), getY() + 100);
+        if(deletionCountDown == 0) {
+            getWorld().removeObject(this);
+        } else {
+            setLocation(getX(), getY() + 10);
+            deletionCountDown--; 
+        }
+
     }    
 }
